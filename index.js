@@ -43,7 +43,8 @@ app.post("/foods", function (req, res){
   var id = foods.length + 1;
   var incoming = {id: foods.length + 1,name: req.body.foodInput,yumminess: "not much"};
   foods.push(incoming);
-  res.redirect('..');
+  //res.redirect('..');
+  res.send(JSON.stringify(incoming));
 });
 
 app.delete("/foods/:id", function (req, res){
