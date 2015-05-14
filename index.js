@@ -32,7 +32,7 @@ app.get("/", function (req, res){
   res.sendFile(path.join(__dirname + '/public/views/index.html'));
 });
 
-// foods index path
+// this is the route that feeds JSON to the front end
 app.get("/foods", function (req, res){
   // render foods index as JSON
   res.send(JSON.stringify(foods));
@@ -40,6 +40,10 @@ app.get("/foods", function (req, res){
 
 app.post("/foods", function (req, res){
   // food#create
+  var id = foods.length + 1;
+  var incoming = {id: foods.length + 1,name: req.body.foodInput,yumminess: "not much"};
+  foods.push(incoming);
+  res.redirect('..');
 });
 
 app.delete("/foods/:id", function (req, res){
